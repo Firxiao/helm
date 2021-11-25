@@ -1,0 +1,8 @@
+1. Run sync manusually:
+
+  export POD_NAME=$(kubectl get pods --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include "aliyun-ddns.name" . }},app.kubernetes.io/instance={{ .Release.Name }}" -o jsonpath="{.items[0].metadata.name}")
+  kubectl -n {{ .Release.Namespace }} exec -t -i $POD_NAME -- /app/aliyun-ddns.py
+
+2. Check the logs by running this commands:
+
+  kubectl -n {{ .Release.Namespace }} logs $POD_NAME

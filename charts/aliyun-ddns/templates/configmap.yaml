@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "aliyun-ddns.fullname" . }}
+  labels:
+    app: {{ include "aliyun-ddns.name" . }}
+    chart: {{ include "aliyun-ddns.chart" . }}
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+data:
+  rc_domain: {{ .Values.rc_domain }}
+  rc_rr_list: {{.Values.rc_rr_list | quote}}

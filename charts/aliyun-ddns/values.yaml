@@ -1,0 +1,27 @@
+# Default values for aliyun-ddns.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: firxiao/aliyun-ddns
+  #pullPolicy: IfNotPresent
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+
+# 阿里云 Access Key ID
+access_key_id: "FFFFFFFFFFFFF"
+# 阿里云 Access Key Secret
+access_key_secret: "FFFFFFFFFFFFF"
+# 阿里云 一级域名
+rc_domain: "example.com"
+# 解析记录
+rc_rr_list: "foo,bar"

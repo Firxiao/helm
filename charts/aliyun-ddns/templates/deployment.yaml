@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "aliyun-ddns.fullname" . }}
+  labels:
+    {{- include "aliyun-ddns.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "aliyun-ddns.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "aliyun-ddns.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          - name: ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "aliyun-ddns.fullname" . }}
+                key: access_key_id
+          - name: ACCESS_KEY_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "aliyun-ddns.fullname" . }}
+                key: access_key_secret
+          - name: RC_DOMAIN
+            valueFrom:
+              configMapKeyRef:
+                name: {{ include "aliyun-ddns.fullname" . }}
+                key: rc_domain
+          - name: RC_RR_LIST
+            valueFrom:
+              configMapKeyRef:
+                name: {{ include "aliyun-ddns.fullname" . }}
+                key: rc_rr_list
