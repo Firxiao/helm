@@ -1,4 +1,4 @@
-# Kubernetes Helm Charts
+# OnCloudOps Kubernetes Helm Charts
 
 ## Usage
 
@@ -25,7 +25,7 @@ To install the aliyun-ddns chart:
     # 解析记录
     rc_rr_list: "foo,bar"
 
-    helm install my-aliyun-ddns aliyun-ddns  -f config.yaml
+    helm install my-aliyun-ddns oncloudops/aliyun-ddns  -f config.yaml
 
 To uninstall the chart:
 
