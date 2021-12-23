@@ -3,6 +3,16 @@ entries:
   aliyun-ddns:
   - apiVersion: v2
     appVersion: latest
+    created: "2021-12-23T19:08:32.40191827Z"
+    description: A Helm chart for aliyun-ddns
+    digest: d651b913c5b7152afb02ab19ba6b6b967270c5cba7b252485887f87dd0276cb3
+    name: aliyun-ddns
+    type: application
+    urls:
+    - https://github.com/Firxiao/helm/releases/download/aliyun-ddns-0.0.2/aliyun-ddns-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: latest
     created: "2021-11-25T16:23:15.947742685Z"
     description: A Helm chart for Kubernetes
     digest: 060879797b9c9d983d2e5ca51437c278e44919f75effb032ed9234ea3e5b1ff7
